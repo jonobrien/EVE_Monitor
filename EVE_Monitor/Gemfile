@@ -46,3 +46,6 @@ end
 
 #use reve to manipulate the eve api
 gem 'reve'
+
+#use eve to also manipulate the eve api, might be redundant
+gem 'eve'
