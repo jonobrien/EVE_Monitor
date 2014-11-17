@@ -1,13 +1,12 @@
 EVEMonitor::Application.routes.draw do
-  resources :logins
-
-  resources :homepages
+  devise_for :users
+  resources :logins, :homepages,
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root_to: 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

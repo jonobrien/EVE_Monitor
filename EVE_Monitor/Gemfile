@@ -49,3 +49,6 @@ gem 'reve'
 
 #use eve to also manipulate the eve api, might be redundant
 #gem 'eve'
+
+#devise for user authentications and features
+gem 'devise'
