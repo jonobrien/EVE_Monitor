@@ -43,3 +43,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#use reve to manipulate the eve api
+gem 'reve'
