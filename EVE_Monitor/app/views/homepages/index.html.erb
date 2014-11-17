@@ -1,0 +1,25 @@
+<h1>Listing homepages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @homepages.each do |homepage| %>
+      <tr>
+        <td><%= link_to 'Show', homepage %></td>
+        <td><%= link_to 'Edit', edit_homepage_path(homepage) %></td>
+        <td><%= link_to 'Destroy', homepage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Homepage', new_homepage_path %>
