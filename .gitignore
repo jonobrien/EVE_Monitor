@@ -2,3 +2,6 @@
 *.db
 *.bak
 *.sql
+*.env
+*.__pycache__/
+
