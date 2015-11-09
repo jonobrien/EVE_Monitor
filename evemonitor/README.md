@@ -18,7 +18,7 @@ To use this project, follow these steps:
 3. Click the buttons to display SDE things
 
 
-## info/sources
+## info/sources/docs
 
 - [EVE Online](https://eveonline.com/)
 - [EVE 3rd-party dev](https://eveonline-third-party-documentation.readthedocs.org)
