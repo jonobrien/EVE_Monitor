@@ -1,6 +1,7 @@
 ##EVE_Monitor
-Django web app utilizing the EVE Online CREST API and SSO features.
+Django web app utilizing the EVE Online CREST API and SSO/Oauth features.
 
-# Features
+# Features (todo)
 - D3 Charts of market data, various dynamic assets/features
-- Full DB rip showing graphical images of static game assets
+- If authorized account, will display that specific data from api key
+- Full DB rip showing graphics of static game assets
