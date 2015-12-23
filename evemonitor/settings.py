@@ -35,7 +35,7 @@ SOCIAL_AUTH_EVEONLINE_SCOPE = ['publicData']
 SOCIAL_AUTH_CLEAN_USERNAMES = False
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # debug = True
 ROOT_URLCONF = 'evemonitor.urls'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
