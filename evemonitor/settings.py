@@ -96,11 +96,15 @@ TEMPLATES = [
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-# default is sqlite, redefine as postgresql
+# default is sqlite
+# TODO -- redefine as postgresql for heroku
+#                     evedb for postgres
+#                     psql <db> <username> <password>
+#                     psql evedb 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),#evedb for postgres
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -109,8 +113,7 @@ DATABASES['default'] = dj_database_url.config()
 
 # Enable Connection Pooling (if desired)
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
-# psql <db> <username> <password>
-# psql evedb postgres postgres
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -128,7 +131,7 @@ ALLOWED_HOSTS = ['*']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
