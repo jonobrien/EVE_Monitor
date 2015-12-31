@@ -28,6 +28,7 @@ To use this project, follow these steps:
 - [Pycrest - python api wrapper](https://pycrest.readthedocs.org)
 - [XML api docs](http://wiki.eveuniversity.org/EVE_API_Guide)
 - [XML api endpoints](https://neweden-dev.com/API)
+- [in-game browser specs](https://wiki.eveonline.com/en/wiki/Category:In-game_Browser)
 
 ## CCP Copyright Notice [Here](https://developers.eveonline.com/resource/license-agreement)
 
