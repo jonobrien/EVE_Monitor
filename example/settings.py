@@ -19,6 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SOCIAL_AUTH_EVEONLINE_KEY = '<Your EVE CREST Application Key>'
 SOCIAL_AUTH_EVEONLINE_SECRET = '<Your EVE CREST Application Secret>'
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -28,7 +29,12 @@ SECRET_KEY = 'hy=_$sv&e6-(vwwdp7(&ldz$snpa^^@=e$2g_nz_zb$k)h3n+#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+
+
+##Template changes for python3, see TEMPLATES dict below
+#TEMPLATE_DEBUG = True
+
+
 
 ALLOWED_HOSTS = []
 
@@ -43,7 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'social.apps.django_app.default',
-    'example.crest_app',
+    'example.crest_app'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,9 +67,26 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
-    'social.apps.django_app.context_processors.backends',
-)
+## for python3/django >1.8 support added TEMPLATES dict below
+# TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+#     'social.apps.django_app.context_processors.backends'
+# )
+# TEMPLATES = [{
+#     'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [
+#             os.path.join(BASE_DIR, 'templates'),
+#             os.path.join(BASE_DIR, 'static'),
+#         ],
+#         'APP_DIRS': True,
+#     'OPTIONS': {
+#         'context_processors': [
+#             'social.apps.django_app.context_processors.backends',
+#         ]
+#     }
+# }]
+
+
+
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.eveonline.EVEOnlineOAuth2',
