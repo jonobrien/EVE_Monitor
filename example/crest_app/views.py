@@ -33,7 +33,8 @@ class HomeView(TemplateView):
         incursions = []
         for thing_that_looks_like_a_dict_but_isnt in public_crest.incursions().items:
             incursion = {}
-            for key, value in thing_that_looks_like_a_dict_but_isnt._dict.iteritems():
+            ## changed 'iteritems -> items for py3 support'
+            for key, value in thing_that_looks_like_a_dict_but_isnt._dict.items(): 
                 incursion[key] = value._dict if hasattr(value, '_dict') else value
             incursions.append(incursion)
         return {

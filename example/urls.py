@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.decorators import login_required
 
-from crest_app.views import HomeView
+from example.crest_app.views import HomeView # added example.'' for py3 support
 
 urlpatterns = patterns(
     '',

@@ -9,7 +9,8 @@ register = template.Library()
 @register.filter()
 def isk(value):
     """format float value as ISK"""
-    if not isinstance(value, (int, long, float, complex)):
+    ## removed 'long' for python3 support rolled long -> int
+    if not isinstance(value, (int, float, complex)):
         return '-'
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
     result = '<span class="isk">{0}&nbsp;ISK</span>'.format(
