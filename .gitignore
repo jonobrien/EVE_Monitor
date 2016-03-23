@@ -4,3 +4,4 @@
 .kdev4
 *.kate-swp
 virtualenv
+static/
