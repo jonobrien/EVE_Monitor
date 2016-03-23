@@ -2,3 +2,4 @@ Django>=1.8
 python-social-auth>=0.2.3
 pycrest
 python-dateutil
+gunicorn==19.4.5
