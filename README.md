@@ -49,3 +49,19 @@ If you want to try it out on your own, loosely follow these steps +/- some pytho
 8. ???
 
 9. Profit!
+
+## Deoloy with Heroku
+
+1. clone repo
+
+2. add heroku remote
+
+```bash
+$ heroku git:remote -a <appname>
+```
+
+3. make an edit and commit to heroku master
+
+4. ???
+
+5. profit
