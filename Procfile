@@ -1,1 +1,1 @@
-web: gunicorn evecrest.wsgi:application
+web: gunicorn example.wsgi:application
