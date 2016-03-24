@@ -133,21 +133,22 @@ WSGI_APPLICATION = 'example.wsgi.application'
 
 ## converted to postgresql from tut: 
 ## https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': dj_database_url.config(),
-        'USER': dj_database_url.config(),
-        'PASSWORD': dj_database_url.config(),
-        'HOST': dj_database_url.config(),
-        'PORT': dj_database_url.config(),
-    }
-}
+# local settings here:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': '<dbname>',
+#         'USER': '<dbuser>',
+#         'PASSWORD': '<password>',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
-## Heroku db settings
-# DATABASES = {}
-# DATABASES['default'] =  dj_database_url.config()
-# DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+## Heroku db settings for prod:
+DATABASES = {}
+DATABASES['default'] =  dj_database_url.config()
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 
 
 
