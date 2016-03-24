@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 import django.conf.global_settings as DEFAULT_SETTINGS
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -129,37 +130,43 @@ WSGI_APPLICATION = 'example.wsgi.application'
 #     }
 # }
 
+
 ## converted to postgresql from tut: 
 ## https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '<myproject>',
-        'USER': '<myprojectuser>',
-        'PASSWORD': '<password>',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': dj_database_url.config(),
+        'USER': dj_database_url.config(),
+        'PASSWORD': dj_database_url.config(),
+        'HOST': dj_database_url.config(),
+        'PORT': dj_database_url.config(),
     }
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
+## Heroku db settings
+# DATABASES = {}
+# DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 
+
+
+
+
+
+## Internationalization
+## https://docs.djangoproject.com/en/1.7/topics/i18n/
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+## Static files (CSS, JavaScript, Images)
+## https://docs.djangoproject.com/en/1.7/howto/static-files/
 STATIC_URL = '/static/'
-# needed for deployment `$ python manage.py collectstatic --noinput` 
+
+## needed for deployment `$ python manage.py collectstatic --noinput` 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
