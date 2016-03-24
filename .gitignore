@@ -5,3 +5,4 @@
 *.kate-swp
 virtualenv
 static/
+.env

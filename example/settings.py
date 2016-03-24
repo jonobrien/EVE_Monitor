@@ -17,8 +17,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Register an application at https://developers.eveonline.com/applications
 # and put your Client ID and Secret Key here. View README.md for more details.
 # SECURITY WARNING: keep this secret!
-SOCIAL_AUTH_EVEONLINE_KEY = '<Your EVE CREST Application Key>'
-SOCIAL_AUTH_EVEONLINE_SECRET = '<Your EVE CREST Application Secret>'
+SOCIAL_AUTH_EVEONLINE_KEY = os.environ['EVE_DEV_ID']
+SOCIAL_AUTH_EVEONLINE_SECRET = os.environ['EVE_DEV_SECRET']
 
 
 # Quick-start development settings - unsuitable for production
