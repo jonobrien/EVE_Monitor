@@ -23,12 +23,23 @@ To use this project, follow these steps:
 ## info/sources/docs
 
 - [EVE Online](https://eveonline.com/)
-- [EVE 3rd party dev](https://eveonline-third-party-documentation.readthedocs.org)
-- [3rd party dev resources](https://developers.eveonline.com/resource/resources)
+- [EVE 3rd party dev - read the docs](https://eveonline-third-party-documentation.readthedocs.org)
+- [CCP dev resources via CCP](https://developers.eveonline.com/resource/resources)
+- [CCP DevBlog](https://developers.eveonline.com/blog)
+- [CCP DevBlog - crest features](https://developers.eveonline.com/blog/article/the-eve-online-api-challenge)
 - [Pycrest - python api wrapper](https://pycrest.readthedocs.org)
 - [XML api docs](http://wiki.eveuniversity.org/EVE_API_Guide)
-- [XML api endpoints](https://neweden-dev.com/API)
-- [in-game browser specs](https://wiki.eveonline.com/en/wiki/Category:In-game_Browser)
+- [XML api endpoints](http://ned.karbowiak.dk/API)
+
+
+- [in-game browser specs](http://wiki.eveuniversity.org/In_Game_Browser_Development)
+- [CREST js - has endpoints](http://jimpurbrick.com/crestmatic/)
+- [CREST CCP presentation - intro to REST/OAuth](http://bambuser.com/v/2494220)
+- [RESTful CREST YT vid](https://www.youtube.com/watch?v=QMQOjUjrZIo)
+- [really old images, etc](https://community.eveonline.com/news/dev-blogs/eve-data-export-rmr-edition/)
+- [~29mil killmails](https://www.reddit.com/r/evetech/comments/3ohd1v/28285480_killmails_crest/)
+- [python cron job - zkill](https://www.reddit.com/r/evetech/comments/4c2xgy/lf_kills_feed/d1fx8z7)
+- [ridetheclown - full api results as of Odyssey](http://ridetheclown.com/eveapi/audit.php)
 
 ## CCP Copyright Notice [Here](https://developers.eveonline.com/resource/license-agreement)
 
