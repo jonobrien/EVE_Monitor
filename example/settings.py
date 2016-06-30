@@ -131,7 +131,7 @@ WSGI_APPLICATION = 'example.wsgi.application'
 # }
 
 
-## converted to postgresql from tut: 
+## converted to postgresql from tut:
 ## https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04
 # local settings here:
 # DATABASES = {
@@ -168,6 +168,6 @@ USE_TZ = True
 ## https://docs.djangoproject.com/en/1.7/howto/static-files/
 STATIC_URL = '/static/'
 
-## needed for deployment `$ python manage.py collectstatic --noinput` 
+## needed for deployment `$ python manage.py collectstatic --noinput`
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
