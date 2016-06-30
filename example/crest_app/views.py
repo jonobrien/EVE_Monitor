@@ -27,14 +27,14 @@ class HomeView(TemplateView):
         public_crest = pycrest.EVE()
         public_crest()
 
-        tranquility_user_count = public_crest.userCounts.eve
+        tranquility_user_count = public_crest().userCount_str
 
         # fetch incursions and make them usable inside a Django template
         incursions = []
         for thing_that_looks_like_a_dict_but_isnt in public_crest.incursions().items:
             incursion = {}
             ## changed 'iteritems -> items for py3 support'
-            for key, value in thing_that_looks_like_a_dict_but_isnt._dict.items(): 
+            for key, value in thing_that_looks_like_a_dict_but_isnt._dict.items():
                 incursion[key] = value._dict if hasattr(value, '_dict') else value
             incursions.append(incursion)
         return {
