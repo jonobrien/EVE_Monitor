@@ -6,3 +6,4 @@
 virtualenv
 static/
 .env
+venvcrest/
