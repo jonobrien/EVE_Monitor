@@ -11,6 +11,13 @@ class EveUser(AbstractUser):
     @cached_property
     def _eve_auth(self):
         """shortcut to python-social-auth's EVE-related extra data for this user"""
+        print()
+        print()
+        print(self)
+        print()
+        print(self.social_auth.get(provider='eveonline').extra_data)
+        print()
+        print()
         return self.social_auth.get(provider='eveonline').extra_data
 
     def _get_crest_tokens(self):
