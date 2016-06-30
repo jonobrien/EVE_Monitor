@@ -12,11 +12,12 @@ class EveUser(AbstractUser):
     def _eve_auth(self):
         """shortcut to python-social-auth's EVE-related extra data for this user"""
         print()
-        print()
+        print("-------------self:----------------")
         print(self)
-        print()
+        print("------------data: -----------------")
+        print(type(self.social_auth.get(provider='eveonline').extra_data))
         print(self.social_auth.get(provider='eveonline').extra_data)
-        print()
+        print("------------------------------")
         print()
         return self.social_auth.get(provider='eveonline').extra_data
 
