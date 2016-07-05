@@ -37,7 +37,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -148,7 +148,7 @@ WSGI_APPLICATION = 'example.wsgi.application'
 ## Heroku db settings for prod:
 DATABASES = {}
 DATABASES['default'] =  dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+#DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 
 
 
