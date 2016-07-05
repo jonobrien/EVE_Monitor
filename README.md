@@ -7,7 +7,7 @@ This is a simple Django App with EVE Online Single Sign-On (SSO) and authenticat
 It depends on [Python Social Auth](http://psa.matiasaguirre.net/) to integrate EVE SSO with Django's builtin user authentication system and uses [PyCrest](https://forums.eveonline.com/default.aspx?g=posts&t=398676) to interact with the CREST API.
 
 ## Live Demo
-A live demo used to be available[here](http://django-crest-example.dubiose-briefkastenfirma.de/) but it no longer works due to db issues and changes to the CREST api
+A live demo is available[here](http://evecrest.herokuapp.com/login/)
 
 ## Getting started
 If you want to try it out on your own, loosely follow these steps +/- some python package fun:
@@ -45,15 +45,12 @@ If you want to try it out on your own, loosely follow these steps +/- some pytho
   ```
 
 7. point your browser to [http://localhost:8000/](http://localhost:8000/)
-
 8. ???
-
 9. Profit!
 
-## Deoloy with Heroku
+## Deoloy with Heroku Toolbelt
 
 1. clone repo
-
 2. add heroku remote
 
 ```bash
@@ -72,6 +69,7 @@ $ git push heroku python3:master
 $ heroku run python manage.py migrate
 ```
 
-4. ???
+5. ???
+6. profit
 
-5. profit
+(or just make the heroku app and connect GH account)
