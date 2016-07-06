@@ -47,14 +47,18 @@ class HomeView(TemplateView):
 
         # here we use pycrest, but we should really TODO -- fix backend to call CREST directly
         # since we already completed the authentication process via python-social-auth
-        authed_crest = pycrest.eve.AuthedConnection(
-            res=self.request.user._get_crest_tokens(), # calls backend for authed info
-            endpoint=pycrest.EVE()._authed_endpoint,
-            oauth_endpoint=pycrest.EVE()._oauth_endpoint,
-            client_id=settings.SOCIAL_AUTH_EVEONLINE_KEY,
-            api_key=settings.SOCIAL_AUTH_EVEONLINE_SECRET
-        )
-        authed_crest()
+        try:
+            authed_crest = pycrest.eve.AuthedConnection(
+                res=self.request.user._get_crest_tokens(), # calls backend for authed info
+                endpoint=pycrest.EVE()._authed_endpoint,
+                oauth_endpoint=pycrest.EVE()._oauth_endpoint,
+                client_id=settings.SOCIAL_AUTH_EVEONLINE_KEY,
+                api_key=settings.SOCIAL_AUTH_EVEONLINE_SECRET
+            )
+            authed_crest()
+        except: # this info is actually public since changes to CREST
+            authed_crest = pycrest.EVE()
+            print("\n\n\n[!!] catching 401 on refresh_token for now...\n\n\n")
 
         # for demo purposes only: shortcut to market URL
         endpoint = pycrest.EVE()._authed_endpoint
