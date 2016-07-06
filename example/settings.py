@@ -123,32 +123,31 @@ WSGI_APPLICATION = 'example.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+# local settings here:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
-## converted to postgresql from tut:
-## https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04
+## converted to postgresql from :
 # local settings here:
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': '<dbname>',
-#         'USER': '<dbuser>',
-#         'PASSWORD': '<password>',
-#         'HOST': 'localhost',
-#         'PORT': '',
+#         'ENGINE':    'django.db.backends.postgresql_psycopg2',
+#         'NAME':      '<dbname>',
+#         'USER':      '<dbuser>',
+#         'PASSWORD':  '<password>',
+#         'HOST':      'localhost',
+#         'PORT':      '',
 #     }
 # }
 
 ## Heroku db settings for prod:
-DATABASES = {}
-DATABASES['default'] =  dj_database_url.config()
-#DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+#DATABASES = {}
+#DATABASES['default'] =  dj_database_url.config()
 
 
 
