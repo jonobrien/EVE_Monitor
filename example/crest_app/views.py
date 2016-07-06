@@ -45,10 +45,10 @@ class HomeView(TemplateView):
     def get_authed_crest_context(self):
         """fetch some market data from authenticated CREST"""
 
-        # here we rudely fumble some of PyCrest's private parts
+        # here we use pycrest, but we should really TODO -- fix backend to call CREST directly
         # since we already completed the authentication process via python-social-auth
         authed_crest = pycrest.eve.AuthedConnection(
-            res=self.request.user._get_crest_tokens(),
+            res=self.request.user._get_crest_tokens(), # calls backend for authed info
             endpoint=pycrest.EVE()._authed_endpoint,
             oauth_endpoint=pycrest.EVE()._oauth_endpoint,
             client_id=settings.SOCIAL_AUTH_EVEONLINE_KEY,
