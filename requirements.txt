@@ -5,9 +5,9 @@ dj-database-url==0.4.0
 gunicorn==19.0.0
 oauthlib==1.0.3
 psycopg2==2.6.1
--e git+https://github.com/jonobrien/PyCrest.git#egg=pycrest
+-e git+https://github.com/jonobrien/PyCrest.git@f8e4bfa7e5f4f375d782fe0acf477112b1a72f91#egg=pycrest-master
 python-dateutil==2.5.1
--e git+https://github.com/jonobrien/python-social-auth.git#egg=python-social-auth
+python-social-auth==0.2.19
 python3-openid==3.0.9
 requests==2.9.1
 requests-oauthlib==0.6.1
