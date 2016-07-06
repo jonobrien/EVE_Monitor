@@ -7,3 +7,4 @@ virtualenv
 static/
 .env
 venvcrest/
+*.sublime*
