@@ -10,11 +10,6 @@ import dj_database_url
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-# Register an application at https://developers.eveonline.com/applications
-# and put your Client ID and Secret Key here. View README.md for more details.
-SOCIAL_AUTH_EVEONLINE_KEY = os.environ['EVE_DEV_ID']
-SOCIAL_AUTH_EVEONLINE_SECRET = os.environ['EVE_DEV_SECRET']
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -79,6 +74,12 @@ STATICFILES_FINDERS = (
 # }]
 
 
+# Register an application at https://developers.eveonline.com/applications
+# and put your Client ID and Secret Key here. View README.md for more details.
+
+
+SOCIAL_AUTH_EVEONLINE_KEY = os.environ['EVE_DEV_ID']
+SOCIAL_AUTH_EVEONLINE_SECRET = os.environ['EVE_DEV_SECRET']
 
 
 AUTHENTICATION_BACKENDS = (
@@ -87,6 +88,19 @@ AUTHENTICATION_BACKENDS = (
 
 
 AUTH_USER_MODEL = 'crest_app.EveUser'
+
+
+SOCIAL_AUTH_EVEONLINE_SCOPE = [
+    'publicData',
+    'characterLocationRead'
+]
+
+
+SOCIAL_AUTH_CLEAN_USERNAMES = False
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'
 
 
 SOCIAL_AUTH_PIPELINE = (
@@ -103,13 +117,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.debug.debug'
 )
 
-
-SOCIAL_AUTH_EVEONLINE_SCOPE = ['publicData']
-SOCIAL_AUTH_CLEAN_USERNAMES = False
-
-LOGIN_URL = '/login/'
-
-LOGIN_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'example.urls'
 
