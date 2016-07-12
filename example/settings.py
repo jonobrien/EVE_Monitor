@@ -92,7 +92,8 @@ AUTH_USER_MODEL = 'crest_app.EveUser'
 
 SOCIAL_AUTH_EVEONLINE_SCOPE = [
     'publicData',
-    'characterLocationRead'
+    'characterLocationRead',
+    'characterContactsRead'
 ]
 
 
