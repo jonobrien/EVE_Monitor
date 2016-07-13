@@ -93,7 +93,20 @@ AUTH_USER_MODEL = 'crest_app.EveUser'
 SOCIAL_AUTH_EVEONLINE_SCOPE = [
     'publicData',
     'characterLocationRead',
-    'characterContactsRead'
+    'characterContactsRead',
+    'characterAccountRead',
+    'characterAssetsRead',
+    'characterCalendarRead',
+    'characterChatChannelsRead',
+    'characterClonesRead',
+    'characterContractsRead',
+    'characterFactionalWarfareRead',
+    'characterFittingsRead',
+    'characterSkillsRead',
+    'characterWalletRead',
+    'characterContactsWrite',
+    # 'fleetRead',
+    # 'structureVulnUpdate' # doesn't break on sso, but doesn't seem accessible
 ]
 
 

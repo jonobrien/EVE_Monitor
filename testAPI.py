@@ -5,9 +5,8 @@ eve = pycrest.EVE()
 eve()
 
 def getEndpoints(eveObj):
-    for endpoint in list(eveObj()._dict.items()):
-        pass
-    #print(endpoint)
+    for each endpoint in list(eveObj()._dict.items()):
+        print(endpoint)
 #getEndpoints(eve)
 
 # doc helpers for working with CREST data
@@ -43,8 +42,8 @@ print()
 public_crest = pycrest.EVE()
 public_crest()
 
-tranquility_user_count = public_crest().userCount_str
-print(tranquility_user_count)
+# tranquility_user_count = public_crest().userCount_str
+# print(tranquility_user_count)
 """
 incursions = []
 for thing_that_looks_like_a_dict_but_isnt in public_crest.incursions().items:
@@ -55,11 +54,12 @@ for thing_that_looks_like_a_dict_but_isnt in public_crest.incursions().items:
 print(incursions)
 print()
 """
-inc = getAllItems(public_crest.incursions())
+# inc = getAllItems(public_crest.incursions())
 # same as the double nested for loop ^^
-print(inc)
-print()
+# print(inc)
+# print()
 
+"""
 # debug my authed connection for workaround currently while refresh tokens are fixed
 endpoint = pycrest.EVE()._authed_endpoint
 type_id = 34          # Tritanium, the "Hello World" of EVE Items...
@@ -68,3 +68,4 @@ type_url = "{0}inventory/types/{1}/".format(endpoint, type_id)
 sell_orders_url = "{0}market/{1}/orders/sell/?type={2}".format(endpoint, region_id, type_url)
 sell_orders = public_crest.get(sell_orders_url)['items']
 print(sell_orders)
+"""

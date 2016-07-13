@@ -56,10 +56,19 @@ class HomeView(TemplateView):
                 api_key=settings.SOCIAL_AUTH_EVEONLINE_SECRET
             )
             authed_crest()
-            # print(authed_crest().decode().character().contacts())
-        except: # this info is actually public since changes to CREST
-            authed_crest = pycrest.EVE()
-            print("\n\n\n[!!] catching 401 on refresh_token for now...\n\n\n")
+            """
+            print(authed_crest())
+            print()
+            print(authed_crest().decode().character()) # authed data
+            print()
+            print(authed_crest().sovereignty().structures())
+            print()
+            """
+
+
+        except : # this info is actually public since changes to CREST
+           authed_crest = pycrest.EVE()
+           print("\n\n\n[!!] catching 401 on refresh_token for now...\n\n\n")
 
         # for demo purposes only: shortcut to market URL
         endpoint = pycrest.EVE()._authed_endpoint
