@@ -37,41 +37,10 @@ class HomeView(TemplateView):
             for key, value in thing_that_looks_like_a_dict_but_isnt._dict.items():
                 incursion[key] = value._dict if hasattr(value, '_dict') else value
             incursions.append(incursion)
-        return {
-            'user_count': tranquility_user_count,
-            'incursions': incursions,
-        }
 
-    def get_authed_crest_context(self):
-        """fetch some market data from authenticated CREST"""
-
-        # here we use pycrest, but we should really TODO -- fix backend to call CREST directly
-        # since we already completed the authentication process via python-social-auth
-        try:
-            authed_crest = pycrest.eve.AuthedConnection(
-                res=self.request.user._get_crest_tokens(), # calls backend for authed info
-                endpoint=pycrest.EVE()._authed_endpoint,
-                oauth_endpoint=pycrest.EVE()._oauth_endpoint,
-                client_id=settings.SOCIAL_AUTH_EVEONLINE_KEY,
-                api_key=settings.SOCIAL_AUTH_EVEONLINE_SECRET
-            )
-            authed_crest()
-            """
-            print(authed_crest())
-            print()
-            print(authed_crest().decode().character()) # authed data
-            print()
-            print(authed_crest().sovereignty().structures())
-            print()
-            """
-
-
-        except : # this info is actually public since changes to CREST
-           authed_crest = pycrest.EVE()
-           print("\n\n\n[!!] catching 401 on refresh_token for now...\n\n\n")
 
         # for demo purposes only: shortcut to market URL
-        endpoint = pycrest.EVE()._authed_endpoint
+        endpoint = public_crest._public_endpoint
         type_id = 34          # Tritanium, the "Hello World" of EVE Items...
         region_id = 10000002  # The Forge
         type_url = "{0}inventory/types/{1}/".format(endpoint, type_id)
@@ -81,8 +50,8 @@ class HomeView(TemplateView):
         buy_orders_url = "{0}market/{1}/orders/buy/?type={2}".format(endpoint, region_id, type_url)
         sell_orders_url = "{0}market/{1}/orders/sell/?type={2}".format(endpoint, region_id, type_url)
 
-        sell_orders = authed_crest.get(sell_orders_url)['items']
-        buy_orders = authed_crest.get(buy_orders_url)['items']
+        sell_orders = public_crest.get(sell_orders_url)['items']
+        buy_orders = public_crest.get(buy_orders_url)['items']
 
         # sort by price up/down
         sell_orders = sorted(sell_orders, key=lambda k: k['price'])
@@ -97,8 +66,44 @@ class HomeView(TemplateView):
             buy_orders = buy_orders[0:limit]
 
         return {
+            'user_count': tranquility_user_count,
+            'incursions': incursions,
             'sell_orders': sell_orders,
-            'buy_orders': buy_orders
+            'buy_orders': buy_orders,
+        }
+
+    def get_authed_crest_context(self):
+        """fetch some market data from authenticated CREST"""
+
+        # here we use pycrest, but we should really TODO -- fix backend to call CREST directly
+        # since we already completed the authentication process via python-social-auth
+        ####try:
+        authed_crest = pycrest.eve.AuthedConnection(
+            res=self.request.user._get_crest_tokens(), # calls backend for authed info
+            endpoint=pycrest.EVE()._authed_endpoint,
+            oauth_endpoint=pycrest.EVE()._oauth_endpoint,
+            client_id=settings.SOCIAL_AUTH_EVEONLINE_KEY,
+            api_key=settings.SOCIAL_AUTH_EVEONLINE_SECRET
+        )
+        authed_crest()
+        """
+        print(authed_crest())
+        print()
+        # character info associated with the passed token, see crest_walking_authed" PR / "authed calls" issue about it.
+        print(authed_crest().decode().character())
+        print()
+        print(authed_crest().sovereignty().structures()) # scope not implemented on sso?
+        print()
+        """
+
+
+        ###except : # this info is actually public since changes to CREST
+        ###   authed_crest = pycrest.EVE()
+        ###   print("\n\n\n[!!] catching 401 on refresh_token for now...\n\n\n")
+
+
+        return {
+
         }
 
     def get_context_data(self, **kwargs):
