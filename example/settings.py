@@ -1,29 +1,26 @@
-"""
-Django 1.7 settings
-https://docs.djangoproject.com/en/1.7/topics/settings/
-"""
+""" heroku settings keep changing on their doc site, just going to leave these here """
 
 import django.conf.global_settings as DEFAULT_SETTINGS
 import dj_database_url
+import os
+
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hy=_$sv&e6-(vwwdp7(&ldz$snpa^^@=e$2g_nz_zb$k)h3n+#'
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-
+WSGI_APPLICATION = 'example.wsgi.application'
+SECRET_KEY = os.environ['SECRET_KEY']
+ROOT_URLCONF = 'example.urls'
+LANGUAGE_CODE = 'en-us'
 ALLOWED_HOSTS = ['*']
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+
+DEBUG = True # fix templates first...
 
 
 INSTALLED_APPS = (
@@ -34,7 +31,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'social.apps.django_app.default',
-    'example.crest_app'
+    'example.crest_app',
 )
 
 
@@ -49,10 +46,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
+""" templates """
 
 
 ## for python3/django >1.8 support added TEMPLATES dict below
@@ -74,12 +68,19 @@ STATICFILES_FINDERS = (
 # }]
 
 
+""" auth """
+
+
 # Register an application at https://developers.eveonline.com/applications
 # and put your Client ID and Secret Key here. View README.md for more details.
 
 
-SOCIAL_AUTH_EVEONLINE_KEY = os.environ['EVE_DEV_ID']
 SOCIAL_AUTH_EVEONLINE_SECRET = os.environ['EVE_DEV_SECRET']
+SOCIAL_AUTH_EVEONLINE_KEY = os.environ['EVE_DEV_ID']
+AUTH_USER_MODEL = 'crest_app.EveUser'
+SOCIAL_AUTH_CLEAN_USERNAMES = False
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
 
 
 AUTHENTICATION_BACKENDS = (
@@ -87,34 +88,23 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-AUTH_USER_MODEL = 'crest_app.EveUser'
-
-
 SOCIAL_AUTH_EVEONLINE_SCOPE = [
     'publicData',
     'characterLocationRead',
-    'characterContactsRead',
     'characterAccountRead',
+    'characterContactsRead',  'characterContactsWrite',
+    'characterFittingsRead',  'characterFittingsWrite',
     'characterAssetsRead',
     'characterCalendarRead',
     'characterChatChannelsRead',
     'characterClonesRead',
     'characterContractsRead',
     'characterFactionalWarfareRead',
-    'characterFittingsRead',
     'characterSkillsRead',
     'characterWalletRead',
-    'characterContactsWrite',
     # 'fleetRead',
     # 'structureVulnUpdate' # doesn't break on sso, but doesn't seem accessible
 ]
-
-
-SOCIAL_AUTH_CLEAN_USERNAMES = False
-
-LOGIN_URL = '/login/'
-
-LOGIN_REDIRECT_URL = '/'
 
 
 SOCIAL_AUTH_PIPELINE = (
@@ -128,58 +118,33 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.debug.debug',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
-    'social.pipeline.debug.debug'
+    'social.pipeline.debug.debug',
 )
 
 
-ROOT_URLCONF = 'example.urls'
-
-WSGI_APPLICATION = 'example.wsgi.application'
+""" DB """
 
 
-# debug settings here:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+if (os.environ.get('LOCALDB')): # doesn't error out with .get()
+    DATABASES = { 'default': {'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3') } }
+else:
+    DATABASES = {}
+    DATABASES['default'] =  dj_database_url.config()
 
 
-## converted to postgresql from :
-# local settings here:
-# DATABASES = {
-#     'default': {
-#         'ENGINE':    'django.db.backends.postgresql_psycopg2',
-#         'NAME':      '<dbname>',
-#         'USER':      '<dbuser>',
-#         'PASSWORD':  '<password>',
-#         'HOST':      'localhost',
-#         'PORT':      '',
-#     }
-# }
-
-## Heroku db settings for prod:
-DATABASES = {}
-DATABASES['default'] =  dj_database_url.config()
+""" static files """
 
 
-
-
-
-
-## Internationalization
-## https://docs.djangoproject.com/en/1.7/topics/i18n/
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
-
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 ## Static files (CSS, JavaScript, Images)
 ## https://docs.djangoproject.com/en/1.7/howto/static-files/
 STATIC_URL = '/static/'
+
 
 ## needed for deployment `$ python manage.py collectstatic --noinput`
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
