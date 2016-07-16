@@ -31,6 +31,7 @@ If you want to try it out on your own, loosely follow these steps +/- some pytho
   ```bash
   EVE_DEV_ID='<Your EVE CREST Application Key>'
   EVE_DEV_SECRET='<Your EVE CREST Application Secret>'
+  LOCALDB='<something>'
   ```
 
 5. initialize the database:
@@ -47,13 +48,13 @@ If you want to try it out on your own, loosely follow these steps +/- some pytho
 8. ???
 9. Profit!
 
-## How to Use
+~~## How to Use~~
 
-To use this project, you need an api key from your account:
+~~To use this project, you need an api key from your account:~~
 
-1. Generate an API key/token to use on the site from your account [API keys](https://community.eveonline.com/support/api-key/)
-2. Allow full access for full featured usage (everything should be highlighted in yellow)
-3. Sign into the SSO link for personalize usage (you are redirected back and are authed)
+~~1. Generate an API key/token to use on the site from your account [API keys](https://community.eveonline.com/support/api-key/)~~
+~~2. Allow full access for full featured usage (everything should be highlighted in yellow)~~
+~~3. Sign into the SSO link for personalize usage (you are redirected back and are authed)~~
 
 
 ## info/sources/docs
@@ -68,6 +69,7 @@ To use this project, you need an api key from your account:
 - [XML api endpoints](http://ned.karbowiak.dk/API)
 - [RESTful CREST YT vid](https://www.youtube.com/watch?v=QMQOjUjrZIo)
 - [CREST CCP presentation - intro to REST/OAuth](http://bambuser.com/v/2494220)
+
 ~~- [in-game browser specs](http://wiki.eveuniversity.org/In_Game_Browser_Development)~~ DEPRECATED
 
 
@@ -89,26 +91,30 @@ Oh you want to deploy it somewhere? I've used heroku in my example, so:
 
 ## Deoloy with Heroku Toolbelt
 
+set config vars on heroku to match env vars locally + postgres add-on
+
+you can always test if heroku will work with `heroku local`
+
 1. clone repo
 2. add heroku remote
 
-```bash
-$ heroku git:remote -a <appname>
-```
+  ```bash
+  $ heroku git:remote -a <appname>
+  ```
 
 3. make an edit and commit to heroku master
 
-```bash
-$ git push heroku python3:master
-```
+  ```bash
+  $ git push heroku python3:master
+  ```
 
 4. tell postgres to migrate (heroku doesn't run this command by default)
 
-```bash
-$ heroku run python manage.py migrate
-```
+  ```bash
+  $ heroku run python manage.py migrate
+  ```
 
 5. ???
 6. profit
 
-(or just make the heroku app and connect GH account)
+(or just register the heroku app and connect GH account, push to GH master)
