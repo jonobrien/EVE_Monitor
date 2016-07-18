@@ -1,10 +1,7 @@
 # EVE-Monitor
 
-- Originally cloned from [here](https://github.com/flesser/django-crest-example)
-- made private for CCP's CREST [API competition](https://www.reddit.com/r/Eve/comments/45wpx5/dev_blog_the_eve_online_api_challenge_ccp_foxfour/?ref=share&ref_source=link) from Reddit
-
-This is a simple Django App with EVE Online Single Sign-On (SSO) and authenticated CREST access.
-It depends on [Python Social Auth](http://psa.matiasaguirre.net/) to integrate EVE SSO with Django's builtin user authentication system and uses [PyCrest](https://forums.eveonline.com/default.aspx?g=posts&t=398676) to interact with the CREST API.
+This is a simple Django App with EVE Online Single Sign-On (SSO) and authenticated CREST access. It shows some basic data that can be acquired via both the authed and public CREST API.
+It uses [Python Social Auth](http://psa.matiasaguirre.net/) to integrate EVE SSO with Django's builtin user authentication and uses [PyCrest](https://github.com/jonobrien/PyCrest) to interact with the CREST API.
 
 ## Live Demo
 A live demo is available[here](http://evecrest.herokuapp.com/login/)
@@ -48,6 +45,7 @@ If you want to try it out on your own, loosely follow these steps +/- some pytho
 8. ???
 9. Profit!
 
+
 ~~## How to Use~~
 
 ~~To use this project, you need an api key from your account:~~
@@ -61,16 +59,14 @@ If you want to try it out on your own, loosely follow these steps +/- some pytho
 
 - [EVE Online](https://eveonline.com/)
 - [EVE 3rd party dev - read the docs](https://eveonline-third-party-documentation.readthedocs.org)
-- [CCP dev resources via CCP](https://developers.eveonline.com/resource/resources)
+- [CCP dev resources](https://developers.eveonline.com/resource/resources)
 - [CCP DevBlog](https://developers.eveonline.com/blog)
 - [CCP DevBlog - crest features](https://developers.eveonline.com/blog/article/the-eve-online-api-challenge)
-- [Pycrest - python api wrapper](https://pycrest.readthedocs.org)
 - [XML api docs](http://wiki.eveuniversity.org/EVE_API_Guide)
 - [XML api endpoints](http://ned.karbowiak.dk/API)
 - [RESTful CREST YT vid](https://www.youtube.com/watch?v=QMQOjUjrZIo)
 - [CREST CCP presentation - intro to REST/OAuth](http://bambuser.com/v/2494220)
-
-~~- [in-game browser specs](http://wiki.eveuniversity.org/In_Game_Browser_Development)~~ DEPRECATED
+- ~~[in-game browser specs](http://wiki.eveuniversity.org/In_Game_Browser_Development)~~ deprecated
 
 
 - [CREST js - has endpoints/schema](http://jimpurbrick.com/crestmatic/)
@@ -79,12 +75,17 @@ If you want to try it out on your own, loosely follow these steps +/- some pytho
 - [python cron job - zkill](https://www.reddit.com/r/evetech/comments/4c2xgy/lf_kills_feed/d1fx8z7)
 - [ridetheclown - full api results as of Odyssey](http://ridetheclown.com/eveapi/audit.php)
 
+
+- Originally cloned from [here](https://github.com/flesser/django-crest-example)
+- made private for CCP's CREST [API competition](https://www.reddit.com/r/Eve/comments/45wpx5/dev_blog_the_eve_online_api_challenge_ccp_foxfour/?ref=share&ref_source=link) from Reddit
+
+----
+
 ## CCP Copyright Notice [Here](https://developers.eveonline.com/resource/license-agreement)
 
 EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP hf. has granted permission to evepaste to use EVE Online and all associated logos and designs for promotional and information purposes on its website but does not endorse, and is not in any way affiliated with, evepaste. CCP is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.
 
-
-
+----
 
 Oh you want to deploy it somewhere? I've used heroku in my example, so:
 

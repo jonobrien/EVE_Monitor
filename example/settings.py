@@ -89,21 +89,18 @@ AUTHENTICATION_BACKENDS = (
 
 
 SOCIAL_AUTH_EVEONLINE_SCOPE = [
-    'publicData',
-    'characterLocationRead',
+# some non corporation* scopes, no remoteClientUI
+# added here in the order of listing from dev application
     'characterAccountRead',
-    'characterContactsRead',  'characterContactsWrite',
-    'characterFittingsRead',  'characterFittingsWrite',
     'characterAssetsRead',
-    'characterCalendarRead',
-    'characterChatChannelsRead',
-    'characterClonesRead',
-    'characterContractsRead',
-    'characterFactionalWarfareRead',
-    'characterSkillsRead',
-    'characterWalletRead',
-    # 'fleetRead',
-    # 'structureVulnUpdate' # doesn't break on sso, but doesn't seem accessible
+    'characterBookmarksRead',
+    'characterContactsRead', 'characterContactsWrite',
+    'characterFittingsRead', 'characterFittingsWrite',
+    'characterLocationRead', 'characterNavigationWrite',
+    'characterLoyaltyPointsRead',
+    'characterOpportunitiesRead',
+    'fleetRead', 'fleetWrite',
+    'publicData',
 ]
 
 

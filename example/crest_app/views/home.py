@@ -4,8 +4,10 @@ from django.contrib.auth import logout as django_logout
 from django.contrib.auth.views import login as django_login
 from django.views.generic import TemplateView
 from django.conf import settings
+from pycrest.errors import APIException
 
 import pycrest
+from pycrestHelpers import getAllItems
 
 
 def login(request):
@@ -31,13 +33,12 @@ class HomeView(TemplateView):
 
         # fetch incursions and make them usable inside a Django template
         incursions = []
-        for thing_that_looks_like_a_dict_but_isnt in public_crest.incursions().items:
+        for dict_but_isnt in public_crest.incursions().items:
             incursion = {}
             ## changed 'iteritems -> items for py3 support'
-            for key, value in thing_that_looks_like_a_dict_but_isnt._dict.items():
+            for key, value in dict_but_isnt._dict.items():
                 incursion[key] = value._dict if hasattr(value, '_dict') else value
             incursions.append(incursion)
-
 
         # for demo purposes only: shortcut to market URL
         endpoint = public_crest._public_endpoint
@@ -72,39 +73,37 @@ class HomeView(TemplateView):
             'buy_orders': buy_orders,
         }
 
+
     def get_authed_crest_context(self):
         """fetch some market data from authenticated CREST"""
 
         # here we use pycrest, but we should really TODO -- fix backend to call CREST directly
         # since we already completed the authentication process via python-social-auth
-        ####try:
-        authed_crest = pycrest.eve.AuthedConnection(
-            res=self.request.user._get_crest_tokens(), # calls backend for authed info
-            endpoint=pycrest.EVE()._authed_endpoint,
-            oauth_endpoint=pycrest.EVE()._oauth_endpoint,
-            client_id=settings.SOCIAL_AUTH_EVEONLINE_KEY,
-            api_key=settings.SOCIAL_AUTH_EVEONLINE_SECRET
-        )
-        authed_crest()
-        """
-        print(authed_crest())
-        print()
-        # character info associated with the passed token, see crest_walking_authed" PR / "authed calls" issue about it.
-        print(authed_crest().decode().character())
-        print()
-        print(authed_crest().sovereignty().structures()) # scope not implemented on sso?
-        print()
-        """
+        try:
+            authed_crest = pycrest.eve.AuthedConnection(
+                res=self.request.user._get_crest_tokens(), # calls backend for authed info
+                endpoint=pycrest.EVE()._authed_endpoint,
+                oauth_endpoint=pycrest.EVE()._oauth_endpoint,
+                client_id=settings.SOCIAL_AUTH_EVEONLINE_KEY,
+                api_key=settings.SOCIAL_AUTH_EVEONLINE_SECRET
+            )
+            authed_crest()
+        except: # stale refresh token fix needed, authed_crest().refresh() 
+                # doesn't seem to actually fix anything when APIException caught here
+            logout(self.request)
 
-
-        ###except : # this info is actually public since changes to CREST
-        ###   authed_crest = pycrest.EVE()
-        ###   print("\n\n\n[!!] catching 401 on refresh_token for now...\n\n\n")
-
-
+        authed_char = authed_crest().decode().character()
+        fittings = getAllItems(authed_char.fittings())
+        contacts = getAllItems(authed_char.contacts())
+        opportunities = getAllItems(authed_char.opportunities())
+        lp = getAllItems(authed_char.loyaltyPoints())
         return {
-
+            'loyaltyPoints': lp,
+            'fittings': fittings,
+            'contacts': contacts,
+            'opportunities': opportunities,
         }
+
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
