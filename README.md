@@ -47,12 +47,14 @@ If you want to try it out on your own, loosely follow these steps:
 ## info/sources/docs
 
 - [EVE Online](https://eveonline.com/)
-- [EVE 3rd party dev - read the docs](https://eveonline-third-party-documentation.readthedocs.org)
+- [3rd party dev docs](https://eveonline-third-party-documentation.readthedocs.org)
 - [CCP dev resources](https://developers.eveonline.com/resource/resources)
-- [CCP DevBlog](https://developers.eveonline.com/blog)
+- [CCP Updates](http://updates.eveonline.com)
+- [CCP DevBlogs](https://developers.eveonline.com/blog)
 - [CCP DevBlog - crest features](https://developers.eveonline.com/blog/article/the-eve-online-api-challenge)
+- [CCP DevBlog - alpha clones](https://community.eveonline.com/news/dev-blogs/introducing-clone-states-and-the-future-of-access-to-eve-online)
 - [XML api docs](http://wiki.eveuniversity.org/EVE_API_Guide)
-- [XML api endpoints](http://ned.karbowiak.dk/API)
+- [XML api endpoints](http://ned.karbowiak.dk/API) or [dev.neweden](https://dev.neweden.xyz/API)
 - [RESTful CREST YT vid](https://www.youtube.com/watch?v=QMQOjUjrZIo)
 - [CREST CCP presentation - intro to REST/OAuth](http://bambuser.com/v/2494220)
 
@@ -64,12 +66,12 @@ If you want to try it out on your own, loosely follow these steps:
 - [ridetheclown - full api results as of Odyssey](http://ridetheclown.com/eveapi/audit.php)
 
 
-- cloned [here](https://github.com/flesser/django-crest-example)
+- originally cloned flesser's [code](https://github.com/flesser/django-crest-example)
 - made private for CCP's CREST [API competition](https://www.reddit.com/r/Eve/comments/45wpx5/dev_blog_the_eve_online_api_challenge_ccp_foxfour/?ref=share&ref_source=link) from Reddit
 
 ----
 
-### CCP Copyright Notice [Here](https://developers.eveonline.com/resource/license-agreement)
+### CCP Copyright [Notice](https://developers.eveonline.com/resource/license-agreement)
 
 ----
 
